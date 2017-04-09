@@ -17,6 +17,9 @@ export default {
 	moduleName: pkg.amdName,
 	dest: format==='es' ? pkg.module : format==='umd' ? pkg['umd:main'] : pkg.main,
 	external: ['preact'],
+	globals: {
+		preact: 'preact'
+	},
 	entry: 'src/index.js',
 	plugins: [
 		alias({
