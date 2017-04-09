@@ -156,3 +156,7 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 ## License
 
 [MIT License](LICENSE.md) © [Jason Miller](https://jasonformat.com/)
+
+
+[preact]: https://github.com/developit/preact
+[react]: https://github.com/facebook/react
