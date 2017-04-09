@@ -59,9 +59,6 @@
       "expect": true
     }
   },
-  "bundledDependencies": {
-    "dlv": "^1.1.0"
-  },
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-eslint": "^7.1.1",
