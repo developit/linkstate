@@ -4,9 +4,10 @@ import delve from 'dlv';
  *	@param {Component} component	The component whose state should be updated
  *	@param {string} key				A dot-notated key path to update in the component's state
  *	@param {string} eventPath		A dot-notated key path to the value that should be retrieved from the Event or component
+ *	@param {function} cb			A function to be called once component state is updated
  *	@returns {function} linkedStateHandler
  */
-export default function linkState(component, key, eventPath) {
+export default function linkState(component, key, eventPath, cb) {
 	let path = key.split('.');
 	return function(e) {
 		let t = e && e.target || this,
@@ -18,6 +19,6 @@ export default function linkState(component, key, eventPath) {
 			obj = obj[path[i]] || (obj[path[i]] = !i && component.state[path[i]] || {});
 		}
 		obj[path[i]] = v;
-		component.setState(state);
+		component.setState(state, cb);
 	};
 }
