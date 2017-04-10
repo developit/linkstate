@@ -53,11 +53,11 @@ It's important to understand what linkState does in order to use it comfortably.
 It's easiest to understand these arguments by looking at a simplified implementation of linkState itself:
 
 ```js
-function linkState(component, statePath, valuePath, cb) {
+function linkState(component, statePath, valuePath, callback) {
   return event => {
     let update = {};
     update[statePath] = event[valuePath];
-    component.setState(update, cb);
+    component.setState(update, callback);
   };
 }
 ```
