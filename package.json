@@ -38,7 +38,8 @@
   "files": [
     "src",
     "dist",
-    "polyfill.js"
+    "polyfill.js",
+    "polyfill.js.map"
   ],
   "babel": {
     "presets": [
