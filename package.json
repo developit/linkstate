@@ -1,7 +1,7 @@
 {
   "name": "linkstate",
   "amdName": "linkState",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bind events to state. Works with Preact and React.",
   "main": "dist/linkstate.js",
   "module": "dist/linkstate.es.js",
