@@ -1,5 +1,7 @@
 # linkState
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/developit/linkstate.svg)](https://greenkeeper.io/)
+
 > Create an Event handler function that sets a given state property. Works with [preact] and [react].
 
 -   **Tiny:** less than **300 bytes** of [ES3](https://unpkg.com/linkstate) gzipped
