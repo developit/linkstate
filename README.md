@@ -78,7 +78,7 @@ Notice how we didn't specify the event path - if omitted, `linkState()` will use
 
 ## Usage
 
-Standard usage is simply a function that returns an event handler to update state:
+Standard usage is a function that returns an event handler to update state:
 
 ```js
 import linkState from 'linkstate';
