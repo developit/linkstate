@@ -2,7 +2,7 @@
 
 > Create an Event handler function that sets a given state property. Works with [preact] and [react].
 
--   **Tiny:** less than **300 bytes** of [ES3](https://unpkg.com/linkstate) gzipped
+-   **Tiny:** less than **350 bytes** of [ES3](https://unpkg.com/linkstate) gzipped
 -   **Familiar:** it's just a function that does what you would have done manually
 -   **Standalone:** one function, no dependencies, works everywhere
 
