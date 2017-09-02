@@ -25,6 +25,15 @@ describe('linkstate', () => {
 		expect(linkState(component, 'testStateKey')).to.be.a('function');
 	});
 
+	it('should be memoized', () => {
+		expect(linkState(component, 'a')).to.equal(linkState(component, 'a'));
+		expect(linkState(component, 'a', 'x')).to.equal(linkState(component, 'a', 'x'));
+
+		expect(linkState(component, 'a')).not.to.equal(linkState(component, 'b'));
+		expect(linkState(component, 'a')).not.to.equal(linkState(component, 'a', 'x'));
+		expect(linkState(component, 'a', 'x')).not.to.equal(linkState(component, 'a', 'y'));
+	});
+
 	describe('linkState without eventPath argument', () => {
 		beforeEach( () => {
 			linkFunction = linkState(component, 'testStateKey');
@@ -108,15 +117,6 @@ describe('linkstate', () => {
 
 			expect(component.setState).to.have.been.calledOnce;
 			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
-		});
-	});
-
-	describe('linkState memoisation', () => {
-		it('should return the same function when called with the same inputs', () => {
-			linkFunction = linkState(component, 'nested.state.key');
-			const linkFunctionB = linkState(component, 'nested.state.key');
-
-			expect(linkFunction).to.equal(linkFunctionB);
 		});
 	});
 });

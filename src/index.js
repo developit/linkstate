@@ -7,10 +7,10 @@ import delve from 'dlv';
  *	@returns {function} linkedStateHandler
  */
 export default function linkState(component, key, eventPath) {
-	let path = key.split('.');
-	const cache = component._linkedStates || (component._linkedStates = {});
+	let path = key.split('.'),
+		cache = component.__lsc || (component.__lsc = {});
 
-	return cache[`${key}\n${eventPath}`] || (cache[`${key}\n${eventPath}`] = function(e) {
+	return cache[key+eventPath] || (cache[key+eventPath] = function(e) {
 		let t = e && e.target || this,
 			state = {},
 			obj = state,
