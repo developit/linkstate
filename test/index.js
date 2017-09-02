@@ -110,4 +110,13 @@ describe('linkstate', () => {
 			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
 		});
 	});
+
+	describe('linkState memoisation', () => {
+		it('should return the same function when called with the same inputs', () => {
+			linkFunction = linkState(component, 'nested.state.key');
+			const linkFunctionB = linkState(component, 'nested.state.key');
+
+			expect(linkFunction).to.equal(linkFunctionB);
+		});
+	});
 });

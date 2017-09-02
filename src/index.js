@@ -8,7 +8,9 @@ import delve from 'dlv';
  */
 export default function linkState(component, key, eventPath) {
 	let path = key.split('.');
-	return function(e) {
+	const cache = component._linkedStates || (component._linkedStates = {});
+
+	return cache[`${key}\n${eventPath}`] || (cache[`${key}\n${eventPath}`] = function(e) {
 		let t = e && e.target || this,
 			state = {},
 			obj = state,
@@ -19,5 +21,5 @@ export default function linkState(component, key, eventPath) {
 		}
 		obj[path[i]] = v;
 		component.setState(state);
-	};
+	});
 }
