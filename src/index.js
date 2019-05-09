@@ -8,7 +8,7 @@ var counter = 0;
  */
 export default function linkState(component, key, eventPath) {
 	let path = key.split('.'),
-                _c_id = typeof eventPath === 'function' ? (eventPath._id || (eventPath._id = ++counter)) : key+eventPath,
+                _c_id = typeof eventPath === 'function' ? key+ (eventPath._id || (eventPath._id = ++counter)) : key+eventPath,
 		cache = component.__lsc || (component.__lsc = {});
 
 
