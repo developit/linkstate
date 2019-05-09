@@ -119,4 +119,60 @@ describe('linkstate', () => {
 			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
 		});
 	});
+
+	describe('linkState with eventPath functional argument', () => {
+		before( () => {
+			linkFunction = linkState(component,'testStateKey', function (e) {
+                          return e && e.nested && e.nested.path
+                        });
+			expect(linkFunction).to.be.a('function');
+		});
+
+		it('should extract value using provided function', () => {
+			let event = {nested: {path: 'nestedPathValueFromEvent'}};
+
+			linkFunction.call(component, event);
+
+			expect(component.setState).to.have.been.calledOnce;
+			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
+		});
+	});
+
+	describe('linkState with eventPath state.path-dependent functional argument', () => {
+		before( () => {
+			linkFunction = linkState(component, 'testStateKey', function (e, key) {
+                          return e && e.updated && e.updated[key]
+                        });
+			expect(linkFunction).to.be.a('function');
+		});
+
+		it('should extract value using provided function of event and datakey', () => {
+			let event = {updated: {testStateKey: 'nestedPathValueFromEvent'}};
+
+			linkFunction.call(component, event);
+
+			expect(component.setState).to.have.been.calledOnce;
+			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
+		});
+	});
+
+	describe('linkState with eventPath component.path-dependent functional argument', () => {
+		before( () => {
+                        component.id = "C2";
+			linkFunction = linkState(component, 'testStateKey', function (e) {
+                          return e && e.updated && e.updated[this.id]
+                        });
+			expect(linkFunction).to.be.a('function');
+		});
+
+		it('should extract value using provided function of event and component', () => {
+			let event = {updated: {C1: 'C1Val', C2: 'C2Val'}};
+
+			linkFunction.call(component, event);
+
+			expect(component.setState).to.have.been.calledOnce;
+			expect(component.setState).to.have.been.calledWith({'testStateKey': 'C2Val'});
+		});
+
+	});
 });
