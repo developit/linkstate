@@ -8,7 +8,7 @@
   "jsnext:main": "dist/linkstate.es.js",
   "umd:main": "dist/linkstate.umd.js",
   "scripts": {
-    "test": "eslint src test && mocha -r jsdom-global/register --compilers js:babel-register test/**/*.js",
+    "test": "eslint src test && mocha -r jsdom-global/register -r babel-register test/**/*.js",
     "build": "npm-run-all --silent clean -p transpile:* -s size",
     "clean": "rimraf dist && mkdirp dist",
     "transpile:umd": "rollup -c --environment FORMAT:umd",
@@ -75,7 +75,7 @@
     "jsdom": "^9.12.0",
     "jsdom-global": "^2.1.1",
     "mkdirp": "^0.5.1",
-    "mocha": "^3.2.0",
+    "mocha": "^6.1.4",
     "npm-run-all": "^2.1.1",
     "rimraf": "^2.5.2",
     "rollup": "^0.41.4",
