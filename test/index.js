@@ -102,6 +102,21 @@ describe('linkstate', () => {
 			expect(component.setState).to.have.been.calledWith({nested: {state: {key: 'newValue'}}});
 		});
 
+		it('should set dot notated state key with index support appropriately', () => {
+			linkFunction = linkState(component,'nested.state.0.key');
+			let element = document.createElement('input');
+			element.type= 'text';
+			element.value = 'newValue';
+
+			linkFunction({
+				currentTarget: element,
+				target: element
+			});
+
+			expect(component.setState).to.have.been.calledOnce;
+			expect(component.setState).to.have.been.calledWith({nested: {state: [{key: 'newValue'}]}});
+		});
+
 	});
 
 	describe('linkState with eventPath argument', () => {
