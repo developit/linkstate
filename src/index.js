@@ -13,11 +13,12 @@ export default function linkState(component, key, eventPath) {
 	return cache[key+eventPath] || (cache[key+eventPath] = function(e) {
 		let t = e && e.target || this,
 			state = {},
+			cloneState = JSON.parse(JSON.stringify(component.state)),
 			obj = state,
 			v = typeof eventPath==='string' ? delve(e, eventPath) : t.nodeName ? (t.type.match(/^che|rad/) ? t.checked : t.value) : e,
 			i = 0;
 		for ( ; i<path.length-1; i++) {
-			obj = obj[path[i]] || (obj[path[i]] = !i && component.state[path[i]] || {});
+			obj = obj[path[i]] || (obj[path[i]] = !i && cloneState[path[i]] || {});
 		}
 		obj[path[i]] = v;
 		component.setState(state);
