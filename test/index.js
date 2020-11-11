@@ -50,12 +50,12 @@ describe('linkstate', () => {
 			});
 
 			expect(component.setState).to.have.been.calledOnce;
-			expect(component.setState).to.have.been.calledWith({'testStateKey': 'newValue'});
+			expect(component.setState).to.have.been.calledWith({ testStateKey: 'newValue' });
 
 			linkFunction.call(element);
 
 			expect(component.setState).to.have.been.calledTwice;
-			expect(component.setState.secondCall).to.have.been.calledWith({'testStateKey': 'newValue'});
+			expect(component.setState.secondCall).to.have.been.calledWith({ testStateKey: 'newValue' });
 		});
 
 		it('should use checked attribute on checkbox input when no eventPath is supplied', () => {
@@ -69,7 +69,7 @@ describe('linkstate', () => {
 			});
 
 			expect(component.setState).to.have.been.calledOnce;
-			expect(component.setState).to.have.been.calledWith({'testStateKey': true});
+			expect(component.setState).to.have.been.calledWith({ testStateKey: true });
 		});
 
 		it('should use checked attribute on radio input when no eventPath is supplied', () => {
@@ -83,7 +83,7 @@ describe('linkstate', () => {
 			});
 
 			expect(component.setState).to.have.been.calledOnce;
-			expect(component.setState).to.have.been.calledWith({'testStateKey': true});
+			expect(component.setState).to.have.been.calledWith({ testStateKey: true });
 		});
 
 
@@ -93,13 +93,14 @@ describe('linkstate', () => {
 			element.type= 'text';
 			element.value = 'newValue';
 
+			// @ts-ignore-next
 			linkFunction({
 				currentTarget: element,
 				target: element
 			});
 
 			expect(component.setState).to.have.been.calledOnce;
-			expect(component.setState).to.have.been.calledWith({nested: {state: {key: 'newValue'}}});
+			expect(component.setState).to.have.been.calledWith({ nested: { state: { key: 'newValue' } } });
 		});
 
 	});
@@ -107,16 +108,19 @@ describe('linkstate', () => {
 	describe('linkState with eventPath argument', () => {
 		before( () => {
 			linkFunction = linkState(component,'testStateKey', 'nested.path');
+		});
+
+		it('should be a function', () => {
 			expect(linkFunction).to.be.a('function');
 		});
 
 		it('should give precedence to nested.path on event over nested.path on component', () => {
-			let event = {nested: {path: 'nestedPathValueFromEvent'}};
+			let event = { nested: { path: 'nestedPathValueFromEvent' } };
 
 			linkFunction.call(component, event);
 
 			expect(component.setState).to.have.been.calledOnce;
-			expect(component.setState).to.have.been.calledWith({'testStateKey': 'nestedPathValueFromEvent'});
+			expect(component.setState).to.have.been.calledWith({ testStateKey: 'nestedPathValueFromEvent' });
 		});
 	});
 });

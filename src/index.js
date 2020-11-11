@@ -1,5 +1,7 @@
 import delve from 'dlv';
 
+/** @typedef {import('preact').AnyComponent} Component */
+
 /** Create an Event handler function that sets a given state property.
  *	@param {Component} component	The component whose state should be updated
  *	@param {string} key				A dot-notated key path to update in the component's state

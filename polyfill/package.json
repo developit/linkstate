@@ -1,0 +1,9 @@
+{
+  "name": "linkstate_polyfill",
+  "main": "./dist/polyfill.js",
+  "module": "./dist/polyfill.module.js",
+  "peerDependencies": {
+    "preact": "*",
+    "linkstate": "*"
+  }
+}

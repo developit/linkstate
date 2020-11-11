@@ -1,0 +1,9 @@
+{
+  "name": "linkstate_hook",
+  "main": "./dist/hook.js",
+  "module": "./dist/hook.module.js",
+  "peerDependencies": {
+    "preact": "*",
+    "linkstate": "*"
+  }
+}
