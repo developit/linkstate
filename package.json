@@ -9,7 +9,7 @@
   "unpkg": "./dist/linkstate.umd.js",
   "exports": {
     ".": "./dist/linkstate.module.js",
-    "./polyfill": "./dist/polyfill.module.js",
+    "./polyfill": "./polyfill/dist/polyfill.module.js",
     "./hook": "./hook/dist/hook.module.js",
     "./": "./"
   },
