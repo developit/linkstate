@@ -10,7 +10,7 @@
   "exports": {
     ".": "./dist/linkstate.module.js",
     "./polyfill": "./dist/polyfill.module.js",
-    "./hook": "./dist/hook.module.js",
+    "./hook": "./hook/dist/hook.module.js",
     "./": "./"
   },
   "scripts": {
