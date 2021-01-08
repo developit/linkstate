@@ -19,7 +19,8 @@ export default function linkState(component, key, eventPath) {
 			v = typeof eventPath==='string' ? delve(e, eventPath) : (t && t.nodeName) ? (t.type.match(/^che|rad/) ? t.checked : t.value) : e,
 			i = 0;
 		for ( ; i<path.length-1; i++) {
-			obj = obj[path[i]] || (obj[path[i]] = !i && component.state[path[i]] || {});
+			let iv = /^(\d*)$/.test(path[i+1]) ? [] : {};
+			obj = obj[path[i]] || (obj[path[i]] = !i && component.state[path[i]] || iv);
 		}
 		obj[path[i]] = v;
 		component.setState(state);
