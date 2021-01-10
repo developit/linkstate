@@ -2,6 +2,7 @@
   "name": "linkstate_hook",
   "main": "./dist/hook.js",
   "module": "./dist/hook.module.js",
+  "typings": "./index.d.ts",
   "peerDependencies": {
     "preact": "*",
     "linkstate": "*"
